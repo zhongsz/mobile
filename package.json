@@ -1,0 +1,108 @@
+{
+  "name": "Mobile",
+  "version": "0.0.1",
+  "private": true,
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 7.0.0"
+  },
+  "scripts": {
+    "prestart": "node scripts/rmIntlBabel.js",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "yarn lint && yarn jest",
+    "android": "adb reverse tcp:8081 tcp:8081 && node node_modules/react-native/local-cli/cli.js start",
+    "prebuild": "node scripts/rmbuild.js",
+    "prepush": "yarn test",
+    "build": "node_modules/.bin/tsc",
+    "winbuild": "node_modules\\.bin\\tsc",
+    "ts-lint": "node scripts/lint.js",
+    "ts-fix": "node_modules/.bin/tslint -c tslint.json --fix 'app/**/*.ts?(x)'",
+    "wints-fix": "node_modules\\.bin\\tslint -c tslint.json --fix 'app\\**\\*.ts?(x)'",
+    "lint": "yarn ts-lint",
+    "release": "node scripts/release.js"
+  },
+  "dependencies": {
+    "@reactivex/rxjs": "^5.2.0",
+    "@types/core-decorators": "^0.10.32",
+    "@types/date-fns": "^2.6.0",
+    "@types/lodash": "^4.14.59",
+    "@types/query-string": "^4.3.0",
+    "@types/react": "^15.0.20",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-intl": "^2.2.5",
+    "@types/react-native": "^0.42.16",
+    "@types/react-native-google-analytics-bridge": "^5.0.0",
+    "@types/react-redux": "^4.4.38",
+    "@types/redux": "^3.6.0",
+    "@types/redux-mock-store": "^0.0.7",
+    "@types/redux-persist": "^4.3.1",
+    "core-decorators": "^0.17.0",
+    "date-fns": "^1.28.2",
+    "intl": "^1.2.5",
+    "lodash": "^4.17.4",
+    "query-string": "^4.3.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-intl": "^2.2.3",
+    "react-native": "^0.42.3",
+    "react-native-google-analytics-bridge": "^5.0.1",
+    "react-native-router-flux": "^3.38.0",
+    "react-native-scrollable-tab-view": "^0.7.3",
+    "react-native-sentry": "^0.6.0",
+    "react-native-svg": "^5.1.6",
+    "react-native-svg-icon": "^0.4.0",
+    "react-native-swiper": "^1.5.4",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-mock-store": "^1.2.2",
+    "redux-observable": "^0.14.1",
+    "redux-persist": "^4.5.0",
+    "rxjs": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^2.7.6",
+    "@types/jest": "^19.2.2",
+    "@types/react-addons-test-utils": "^0.14.17",
+    "@types/react-test-renderer": "^15.4.2",
+    "@types/sinon": "^2.1.0",
+    "babel-jest": "^19.0.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-remove-console": "^6.8.1",
+    "babel-preset-react-native": "1.9.1",
+    "enzyme": "^2.8.0",
+    "husky": "^0.13.3",
+    "jest": "^19.0.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.4.2",
+    "request": "^2.81.0",
+    "requestretry": "^1.12.0",
+    "sinon": "^2.1.0",
+    "tslint": "^5.0.0",
+    "tslint-react": "^2.5.0",
+    "typescript": "^2.2.2"
+  },
+  "jest": {
+    "globals": {
+      "__DEV__": true
+    },
+    "preset": "react-native",
+    "setupFiles": [
+      "<rootDir>/scripts/jest/setup.js"
+    ],
+    "collectCoverage": false,
+    "verbose": true,
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.(ts|tsx)$": "<rootDir>/scripts/jest/preprocessor.js"
+    },
+    "testMatch": [
+      "**/app/**/*.test.(ts|tsx|js)"
+    ]
+  }
+}
